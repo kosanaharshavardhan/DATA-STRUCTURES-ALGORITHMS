@@ -4,7 +4,7 @@ using namespace std;
 
 void printwhole(int n){
     if(n==-1){
-        
+
         return;
     }
 
@@ -13,7 +13,8 @@ void printwhole(int n){
 
 int main(){
     int n;
-    cout<<"Enter a number:"
+    cout<<"Enter a number:";
+    cin>>n;
     printwhole(n);
     
     return 0;
