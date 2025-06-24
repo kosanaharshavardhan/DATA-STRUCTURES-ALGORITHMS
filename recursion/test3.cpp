@@ -3,8 +3,9 @@
 using namespace std;
 void Wholenumprinter(int n){
     if(n==-1)   return;
+     cout<<n<<" ";
     Wholenumprinter(n-1);
-    cout<<n<<" ";
+    // cout<<n<<" ";
 }
 int main(){
     int n;
