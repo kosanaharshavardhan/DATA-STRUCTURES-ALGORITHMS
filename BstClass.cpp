@@ -50,7 +50,46 @@ public:
         traversal(root->right);
     }
     TreeNode* remove(TreeNode* root, int val){
-        return nullptr;
+      if(root==nullptr) return nullptr;
+      if(root->data > val){
+            root->left=remove(root->left,val);
+      }
+      else if(root->data< val){
+        root->right=remove(root->right,val);
+      }
+      else{
+        if(root->left==nullptr && root->right==nullptr){
+            delete root;
+            return nullptr;
+        }
+        else if(root->left==nullptr){
+            TreeNode* rightnode=root->right;
+            delete root;
+            return rightnode;
+        }
+        else if(root->right==nullptr){
+            TreeNode* leftnode=root->left;
+            delete root;
+            return leftnode;
+        }
+        else{
+            TreeNode* minsuccessor=minhelper(root->right);
+            root->data=minsuccessor->data;
+            root->right=remove(root->right,minsuccessor->data);
+        }
+        return root;
+      }
+        
+    }
+
+    TreeNode* update(TreeNode* root,int existing,int newdata){
+        
+    }
+    TreeNode* minhelper(TreeNode* root){
+        while(root->left!=nullptr){
+            root=root->left;
+        }
+        return root;
     }
 };
  int main(){
@@ -58,6 +97,17 @@ public:
         bt.root=bt.insert(bt.root,10);
         bt.root=bt.insert(bt.root,20);
         bt.root=bt.insert(bt.root,5);
+        bt.root=bt.insert(bt.root,15);
+        bt.root=bt.insert(bt.root,25);
+        // bt.traversal(bt.root);
+        cout<<endl;
+        // if(!bt.search(bt.root,101)){
+        // cout<<"Element not found\n";
+        // }else
+        // cout<<bt.search(bt.root,101);
+        bt.traversal(bt.root);
+        cout<<endl;
+        bt.root=bt.remove(bt.root,10);
         bt.traversal(bt.root);
 
     }
