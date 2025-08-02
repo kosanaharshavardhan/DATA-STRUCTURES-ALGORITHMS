@@ -13,7 +13,7 @@ public:
                 this->right=nullptr;
             }
     };
-     TreeNode* root=nullptr;
+    TreeNode* root=nullptr;
     TreeNode* insert(TreeNode* root, int val){
         if(root==nullptr){
             TreeNode* newnode= new TreeNode(val);
