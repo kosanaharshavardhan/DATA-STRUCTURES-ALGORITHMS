@@ -52,6 +52,23 @@ public:
         }
 
     }
+    void insert_pos(int data,int pos){
+        if(pos==1){
+            push_front(data);
+        }
+        Node* curr=head;
+        Node* prev=curr;
+        int cnt=1;
+        while ((cnt++)!=pos)
+        {
+            prev=curr;
+            curr=curr->next;
+        }
+        Node* newnode=new Node(data);
+        newnode->next=curr;
+        prev->next=newnode;
+        
+    }
     void pop_back(){
         if(tail==nullptr){
             cout<<"can't perfrom";
@@ -75,8 +92,10 @@ l1.push_front(2);
 l1.push_back(21);
 l1.push_back(122);
 l1.push_back(100);
-l1.pop_front();
-l1.pop_back();
+l1.insert_pos(321,2);
+l1.insert_pos(4321,4);
+// l1.pop_front();
+// l1.pop_back();
 // cout<<l1.head->data;
 Node* temp=l1.head;
 while(temp!=nullptr){
