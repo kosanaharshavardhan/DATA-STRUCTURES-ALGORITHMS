@@ -17,6 +17,18 @@ public:
         head=nullptr;
         tail=NULL;
     }
+    void delete_pos(int pos){
+        int cnt=1;
+        Node* curr=head;
+        Node* prev=curr;
+        while(cnt++!=pos){
+            prev=curr;
+            curr=curr->next;
+        }
+        prev->next=curr->next;
+        curr->next=nullptr;
+        delete(curr);
+    }
     void push_front(int data){
         if(head==nullptr){
             Node* newnode=new Node(data);
@@ -95,6 +107,7 @@ l1.push_back(100);
 l1.insert_pos(321,2);
 l1.insert_pos(4321,4);
 // l1.pop_front();
+l1.delete_pos(4);
 // l1.pop_back();
 // cout<<l1.head->data;
 Node* temp=l1.head;
